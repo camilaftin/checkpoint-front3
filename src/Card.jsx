@@ -1,6 +1,8 @@
+import { Chekpoint } from "./components/checkpoint"
+
 //Este componente deverá receber dados por Props e mostrar as Informações em Tela
 
-export function Card () {
+export function Card() {
   return (
     <div>
 
