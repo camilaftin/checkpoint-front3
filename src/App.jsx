@@ -1,21 +1,14 @@
-//import './style.scss'
+import './style.scss'
 import { useState } from 'react'
 import { Card } from './Card'
 
-
-// Aqui você irá escrever as suas funções de Validação, para verificar se o Formulário foi preenchido corretamente
-
 function App() {
-  // Aqui você irá criar os Estados para manipular os Inputs
-
 
 
   const [nomeGato, setNomeGato] = useState('')
   const [imagemGato, setImagemGato] = useState('')
   const [formularioErro, setFormularioErro] = useState(false)
-  const [allGatos, setAllGatos] = useState([
-
-  ])
+  const [allGatos, setAllGatos] = useState([])
 
   function cadastrarGato(event) {
 
@@ -23,7 +16,7 @@ function App() {
 
     const novoGatoCadastrado = {
       nome: nomeGato,
-      imagem: nomeGato,
+      imagem: imagemGato,
     }
 
     if (nomeGato === '' || nomeGato === '') {
@@ -47,7 +40,7 @@ function App() {
   return (
 
     <div className="App">
-      <h1>Lista Gatos</h1>
+      <h1>Lista Gatos Favoritos</h1>
       <form className={formularioErro ? 'form-error' : ''} onSubmit={event => cadastrarGato(event)}>
 
         <div>
