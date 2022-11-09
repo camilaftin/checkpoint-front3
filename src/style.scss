@@ -1,0 +1,46 @@
+.card-component {
+
+  background-color: #c0c0c0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 42px;
+
+}
+
+.App {
+
+  width: 100%;
+  max-width: 1200px;
+  margin: 50px auto;
+
+
+  &>h1 {
+
+    margin-bottom: 32px;
+
+  }
+
+  &>button {
+
+    color: black;
+    padding: 4px;
+    margin-right: 12px;
+
+  }
+}
+
+form {
+
+  input {
+
+    color: black;
+
+  }
+
+}
+
+.gatos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 42px;
+}

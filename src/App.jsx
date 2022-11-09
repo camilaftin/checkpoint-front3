@@ -1,6 +1,6 @@
 //import './style.scss'
 import { useState } from 'react'
-import { Checkpoint } from "./components/Checkpoint"
+import { Card } from './Card'
 
 
 // Aqui você irá escrever as suas funções de Validação, para verificar se o Formulário foi preenchido corretamente
@@ -8,16 +8,13 @@ import { Checkpoint } from "./components/Checkpoint"
 function App() {
   // Aqui você irá criar os Estados para manipular os Inputs
 
+
+
   const [nomeGato, setNomeGato] = useState('')
   const [imagemGato, setImagemGato] = useState('')
+  const [formularioErro, setFormularioErro] = useState(false)
   const [allGatos, setAllGatos] = useState([
-    {
-      id: 1,
-      name: 'Xbox',
-      price: '3.000',
-      picture: 'https://http2.mlstatic.com/D_NQ_NP_695945-MLB50098260025_052022-O.webp'
 
-    },
   ])
 
   function cadastrarGato(event) {
@@ -26,10 +23,24 @@ function App() {
 
     const novoGatoCadastrado = {
       nome: nomeGato,
-      imagem: imagemGato,
+      imagem: nomeGato,
     }
 
-    setAllGatos([...allGatos, novoGatoCadastrado])
+    if (nomeGato === '' || nomeGato === '') {
+
+      setFormularioErro(true)
+
+    } else {
+
+      setFormularioErro(false)
+
+      setAllGatos([...allGatos, novoGatoCadastrado])
+
+      setNomeGato('')
+      setImagemGato('')
+
+    }
+
   }
 
 
@@ -37,7 +48,7 @@ function App() {
 
     <div className="App">
       <h1>Lista Gatos</h1>
-      <form onSubmit={event => cadastrarGato(event)}>
+      <form className={formularioErro ? 'form-error' : ''} onSubmit={event => cadastrarGato(event)}>
 
         <div>
           <label htmlFor="nomeGato">Nome</label>
@@ -53,12 +64,18 @@ function App() {
 
       </form>
 
+      {
+        formularioErro ? (
+          <span>Por favor, verifique os dados inseridos no formulário</span>
+        ) : null
+      }
+
       <section className='gatos'>
         {
           allGatos.map(
             gato => {
               return (
-                <Checkpoint item={gato} />
+                <Card item={gato} />
               )
             }
           )
